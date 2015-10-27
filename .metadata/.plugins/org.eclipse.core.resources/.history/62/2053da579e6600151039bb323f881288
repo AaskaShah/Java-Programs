@@ -1,0 +1,23 @@
+package threediffnumbers;
+
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner in=new Scanner(System.in);
+		int tc=in.nextInt();
+		int m=1000000007;
+		for(int z=0;z<tc;z++){
+			ArrayList<Long> a=new ArrayList<Long>();
+			a.add(in.nextLong());
+			a.add(in.nextLong());
+			a.add(in.nextLong());
+			Collections.sort(a);
+			System.out.println(((((a.get(0)%m)*((a.get(1)-1)%m))%m)*((a.get(2)-2)%m))%m);
+		}
+
+	}
+
+}

@@ -1,0 +1,91 @@
+package q3;
+
+
+import java.io.*;
+import java.util.*;
+public class Main {
+	public static void main(String[] args)throws IOException {
+		BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+		int n=Integer.parseInt(in.readLine().trim());
+		String[] x=in.readLine().trim().split(" ");
+		int[] grades=new int[n];
+		
+		for(int i=0;i<n;i++){
+			grades[i]=Integer.parseInt(x[i]);
+		}
+		
+		int m=Integer.parseInt(in.readLine().trim());
+		
+		for(int z=0;z<m;z++){
+			x=in.readLine().trim().split(" ");
+			int l=Integer.parseInt(x[0]);
+			int r=Integer.parseInt(x[1]);
+			int[] a=new int[r-l+1];
+			for(int i=l;i<=r;i++){
+				a[i-l]=grades[i];
+			}
+			recursiveQuickSort(a, 0, a.length-1);
+			long ans=0;
+			for(int i=0;i<a.length-1;i++){
+				ans=ans+(a[i+1]-a[i])*(a[i+1]-a[i]);
+			}
+			System.out.println(ans);
+		}
+	}
+	
+	
+	public static void recursiveQuickSort(int[] array, int startIdx, int endIdx) {
+	     
+        int idx = partition(array, startIdx, endIdx);
+
+        // Recursively call quicksort with left part of the partitioned array
+        if (startIdx < idx - 1) {
+            recursiveQuickSort(array, startIdx, idx - 1);
+        }
+
+        // Recursively call quick sort with right part of the partitioned array
+        if (endIdx > idx) {
+            recursiveQuickSort(array, idx, endIdx);
+        }
+    }
+
+    /**
+     * Divides array from pivot, left side contains elements less than
+     * Pivot while right side contains elements greater than pivot.
+     *
+     * @param array array to partitioned
+     * @param left lower bound of the array
+     * @param right upper bound of the array
+     * @return the partition index
+     */
+    public static int partition(int[] array, int left, int right) {
+        int pivot = array[left]; // taking first element as pivot
+
+        while (left <= right) {
+            //searching number which is greater than pivot, bottom up
+            while (array[left] < pivot) {
+                left++;
+            }
+            //searching number which is less than pivot, top down
+            while (array[right] > pivot) {
+                right--;
+            }
+
+            // swap the values
+            if (left <= right) {
+                int tmp = array[left];
+                array[left] = array[right];
+                array[right] = tmp;
+
+                //increment left index and decrement right index
+                left++;
+                right--;
+            }
+        }
+        return left;
+    }
+
+
+
+
+}

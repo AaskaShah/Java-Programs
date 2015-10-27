@@ -1,0 +1,30 @@
+package q1;
+import java.io.*;
+import java.util.*;
+public class Main {
+	public static void main(String[] args)throws IOException {
+		BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+		int m=Integer.parseInt(in.readLine().trim());
+		Hashtable<String, Integer> hash=new Hashtable<String, Integer>();
+		for(int i=0;i<m;i++){
+			String name=in.readLine();
+			if(hash.containsKey(name))
+				hash.put(name, hash.get(name)+1);
+			else
+				hash.put(name, 1);
+		}
+		String winner="";
+		List<String> s=new ArrayList<String>();
+		int max=0;
+		for(String key : hash.keySet()){
+			if(hash.get(key)>max){
+				max=hash.get(key);
+				winner=key;
+			}
+		}
+		System.out.println(winner); 
+		
+	}
+	
+
+}

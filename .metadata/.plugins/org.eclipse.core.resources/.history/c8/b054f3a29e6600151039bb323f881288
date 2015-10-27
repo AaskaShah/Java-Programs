@@ -1,0 +1,42 @@
+package threediffnumbers;
+
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+	public static void main(String[] args)throws IOException {
+		// TODO Auto-generated method stub
+		BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+		int tc=Integer.parseInt(in.readLine());
+		
+		for(int z=0;z<tc;z++){
+			int[] fp=new int[26];
+			int[] fc=new int[26];
+			String parent=in.readLine().trim();
+			System.out.println(parent);
+			for(int i=0;i<parent.length();i++){
+				fp[parent.charAt(i)-'a']++;
+			}
+			int n=Integer.parseInt(in.readLine());
+			for(int i=0;i<n;i++){
+				String x=in.readLine();
+				for(int j=0;j<x.length();j++){
+					fc[x.charAt(j)-'a']++;
+				}
+			}
+			int count=0;
+			for(int i=0;i<26;i++){
+				if(fc[i]<=fp[i]){
+					count++;
+				}
+			}
+			if(count==26)
+				System.out.println("YES");
+			else
+				System.out.println("NO");
+		}
+
+	}
+
+}

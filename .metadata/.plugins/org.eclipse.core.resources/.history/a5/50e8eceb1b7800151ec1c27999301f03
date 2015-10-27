@@ -1,0 +1,40 @@
+package q1;
+import java.io.*;
+import java.util.*;
+public class Main {
+	public static void main(String[] args)throws IOException {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		int k=in.nextInt();
+		int[] a=new int[n];
+		int[] b=new int[n];
+		int[] ab=new int[n];
+		for(int i=0;i<n;i++){
+			a[i]=in.nextInt();
+		}
+		for(int i=0;i<n;i++){
+			b[i]=in.nextInt();
+		}
+		for(int i=0;i<n;i++){
+			ab[i]=a[i]*b[i];
+		}
+		
+		for(int i=0;i<k;i++){
+			int max=0,maxindex=0;
+			for(int j=0;j<n;j++){
+				if(ab[j]>max){
+					max=ab[j];
+					maxindex=j;
+				}
+			}
+			a[maxindex]--;
+			ab[maxindex]=a[maxindex]*b[maxindex];
+		}
+		
+		for(int i=0;i<n;i++)
+			System.out.print(a[i]+" ");
+		System.out.println();
+	}
+	
+
+}

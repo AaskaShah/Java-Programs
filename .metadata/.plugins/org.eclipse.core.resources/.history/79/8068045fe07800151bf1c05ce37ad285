@@ -1,0 +1,27 @@
+package q1;
+import java.io.*;
+import java.util.*;
+public class Main {
+	public static void main(String[] args)throws IOException {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		int m=in.nextInt();
+		ArrayList<Integer> a=new ArrayList<Integer>();
+		for(int i=0;i<m;i++){
+			a.add(in.nextInt());
+			
+		}
+		Collections.sort(a);
+		int min=1000000;
+		for(int i=0;i<m-n;i++){
+			System.out.println(a.get(i)+" "+a.get(i+n));
+			if(a.get(i+n)-a.get(i)<min)
+			min=a.get(i+n)-a.get(i);
+			System.out.println(min);
+		}
+		System.out.println(min);
+		
+	}
+	
+
+}

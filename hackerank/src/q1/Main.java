@@ -1,0 +1,43 @@
+package q1;
+import java.io.*;
+import java.util.*;
+public class Main {
+	public static void main(String[] args)throws IOException {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		int[] f=new int[100001];
+		for(int i=0;i<n;i++){
+			f[in.nextInt()]++;
+		}
+		int count=0;
+		while(allzero(f)==false){
+			int max=0,maxindex=0;int i=0;
+			for(i=1;i<100001;i++){
+				if(f[i]>=max){
+					max=f[i];maxindex=i;
+				}
+				
+			}
+			i=maxindex;
+			count=count+i;
+			f[i]--;
+			if(i!=0)
+			f[i-1]=0;
+			if(i!=100000-1)
+				f[i+1]=0;
+		}
+		System.out.println(count);
+	}
+	static boolean allzero(int[] f){
+		int i=0;
+		for(i=0;i<100000;i++){
+			if(f[i]!=0)
+				break;
+		}
+		if(i!=100000)
+			return false;
+		return true;
+			
+	}
+
+}

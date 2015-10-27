@@ -1,0 +1,17 @@
+import java.util.*;
+import java.io.*;
+public class Main {
+	public static void main(String args[])throws IOException{
+		BufferedReader b=new BufferedReader(new InputStreamReader(System.in));
+		int n1=b.read();
+		int n2=b.read();
+		int n3=b.read();
+		int[] list1=new int[n1];
+		int[] list2=new int[n2];
+		int[] list3=new int[n3];
+		
+		
+		
+	}
+
+}
